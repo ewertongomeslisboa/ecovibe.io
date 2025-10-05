@@ -348,13 +348,7 @@ CREATE POLICY "Anyone can log AI chats"
 
 -- Insert sample data
 
--- Categories
-INSERT INTO categories (name, slug, description) VALUES
-  ('Mudanças Climáticas', 'mudancas-climaticas', 'Notícias e informações sobre o aquecimento global e mudanças climáticas'),
-  ('Reciclagem', 'reciclagem', 'Dicas e práticas de reciclagem e economia circular'),
-  ('Preservação', 'preservacao', 'Conservação da biodiversidade e áreas naturais'),
-  ('Energia Sustentável', 'energia-sustentavel', 'Energias renováveis e eficiência energética')
-ON CONFLICT (slug) DO NOTHING;
+
 
 -- Fun Facts
 INSERT INTO fun_facts (fact, category) VALUES

@@ -87,13 +87,7 @@ export default function TipsPage() {
     e.preventDefault();
     if (!postForm.name || !postForm.email || !postForm.title || !postForm.content) return;
 
-    const { error } = await supabase.from('forum_posts').insert([{
-  user_name: postForm.name,
-  user_email: postForm.email,
-  title: postForm.title,
-  content: postForm.content,
-  category: postForm.category,
-}]);
+    const { error } = await supabase.from('forum_posts').insert([postForm]);
 
     if (!error) {
       alert('Post criado com sucesso!');
