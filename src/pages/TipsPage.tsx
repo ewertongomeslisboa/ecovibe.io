@@ -108,7 +108,9 @@ export default function TipsPage() {
 
     const { error } = await supabase.from('forum_replies').insert([{
       post_id: selectedPost.id,
-      ...replyForm,
+      user_name: replyForm.name,
+      user_email: replyForm.email,
+      content: replyForm.content,
     }]);
 
     if (!error) {
@@ -118,10 +120,13 @@ export default function TipsPage() {
         .eq('id', selectedPost.id);
 
       if (!updateError) {
+        alert('Resposta enviada com sucesso!');
         setReplyForm({ name: '', email: '', content: '' });
         loadReplies(selectedPost.id);
         loadForumPosts();
       }
+    } else {
+      alert('Erro ao enviar resposta. Tente novamente.');
     }
   };
 
